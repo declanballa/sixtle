@@ -1,35 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import Guess from './components/Guess';
+import { fetchRandomWord, validateWord } from './services/api';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [word, setWord] = useState<string>('');
+  const [guesses, setGuesses] = useState<string[][]>(
+    Array(7).fill(Array(6).fill(''))
+  );
+  const [currentGuessIndex, setCurrentGuessIndex] = useState(0);
+
+  useEffect(() => {
+    const results = async () => {
+      const word = await fetchRandomWord();
+      setWord(word);
+      console.log(word);
+    };
+
+    results();
+  }, []);
+
+  const handleLetterChange = (
+    letter: string,
+    letterIndex: number,
+    guessIndex: number
+  ) => {
+    setGuesses([
+      ...guesses.slice(0, guessIndex),
+      [
+        ...guesses[guessIndex].slice(0, letterIndex),
+        letter,
+        ...guesses[guessIndex].slice(letterIndex + 1)
+      ],
+      ...guesses.slice(guessIndex + 1)
+    ]);
+  };
+
+  const handleGuessSubmit = async () => {
+    const validateWordResult = await validateWord(
+      guesses[currentGuessIndex].join('')
+    );
+
+    if (!validateWordResult) {
+      console.log('Invalid word');
+      return;
+    }
+
+    setCurrentGuessIndex(currentGuessIndex + 1);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <h1>Sixtle</h1>
+      <div className='board'>
+        {guesses.map((guess, guessIndex) => (
+          <Guess
+            word={word}
+            key={guessIndex}
+            guess={guess}
+            isCurrentGuess={guessIndex === currentGuessIndex}
+            isLocked={guessIndex < currentGuessIndex}
+            onChange={(letter, letterIndex) =>
+              handleLetterChange(letter, letterIndex, guessIndex)
+            }
+            onSubmit={handleGuessSubmit}
+          />
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

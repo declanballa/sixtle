@@ -1,0 +1,33 @@
+.tile {
+  background-color: transparent;
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+  outline: none;
+  border: 3px solid #3a3a3c;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 500;
+  caret-color: transparent;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.tile.locked {
+  background-color: #3a3a3c;
+}
+
+.tile.locked.exists {
+  background-color: #b59f3b;
+  border-color: #b59f3b;
+}
+
+.tile.locked.exact {
+  background-color: #538d4e;
+  border-color: #538d4e;
+}
