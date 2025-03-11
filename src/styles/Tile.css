@@ -18,9 +18,9 @@
 
 @media screen and (max-width: 768px) {
   .tile {
-    width: 45px;
-    height: 45px;
-    margin: 4px;
+    width: 30px;
+    height: 40px;
+    margin: 3px;
     font-size: 1.5rem;
     border-width: 2px;
   }

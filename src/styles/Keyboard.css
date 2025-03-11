@@ -20,11 +20,13 @@ button {
   background-color: #818384;
   border: none;
   cursor: pointer;
+  color: #fff;
 }
 
 @media screen and (max-width: 768px) {
   button {
     margin: 3px;
+    padding: 11px;
   }
 }
 
