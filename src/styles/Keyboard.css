@@ -26,7 +26,7 @@ button {
 @media screen and (max-width: 768px) {
   button {
     margin: 3px;
-    padding: 11px;
+    padding: 10px;
   }
 }
 

@@ -16,7 +16,7 @@ export interface GuessedLetter {
 function App() {
   const [word, setWord] = useState<string>('');
   const [guesses, setGuesses] = useState<string[][]>(
-    Array(7).fill(Array(6).fill(''))
+    Array(6).fill(Array(6).fill(''))
   );
   const [currentGuessIndex, setCurrentGuessIndex] = useState(0);
   const [currentLetterIndex, setCurrentLetterIndex] = useState(0);
