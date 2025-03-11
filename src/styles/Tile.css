@@ -16,6 +16,16 @@
   cursor: default;
 }
 
+@media screen and (max-width: 768px) {
+  .tile {
+    width: 45px;
+    height: 45px;
+    margin: 4px;
+    font-size: 1.5rem;
+    border-width: 2px;
+  }
+}
+
 .tile.locked {
   background-color: #3a3a3c;
 }

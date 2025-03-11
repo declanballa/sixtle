@@ -6,6 +6,13 @@
   user-select: none;
 }
 
+@media screen and (max-width: 768px) {
+  #root {
+    padding: 0.5rem;
+    max-width: 100%;
+  }
+}
+
 .container {
   position: relative;
 }

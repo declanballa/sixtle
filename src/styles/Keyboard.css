@@ -2,6 +2,13 @@
   margin-top: 40px;
 }
 
+@media screen and (max-width: 768px) {
+  .keyboard {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
 button {
   padding: 16px;
   margin: 4px;
@@ -13,6 +20,12 @@ button {
   background-color: #818384;
   border: none;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  button {
+    margin: 3px;
+  }
 }
 
 button.exact {
