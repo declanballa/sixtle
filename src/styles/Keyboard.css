@@ -1,0 +1,38 @@
+.keyboard {
+  margin-top: 40px;
+}
+
+button {
+  padding: 16px;
+  margin: 4px;
+  font-size: 1.25em;
+  font-weight: 600;
+  text-transform: uppercase;
+  max-width: 50px;
+  border-radius: 5px;
+  background-color: #818384;
+  border: none;
+  cursor: pointer;
+}
+
+button.exact {
+  background-color: #538d4e;
+}
+
+button.exists {
+  background-color: #b59f3b;
+}
+
+button.locked {
+  background-color: #3a3a3c;
+}
+
+button:focus {
+  outline: none;
+}
+
+button.enter,
+button.delete {
+  max-width: none;
+  font-size: 1em;
+}
